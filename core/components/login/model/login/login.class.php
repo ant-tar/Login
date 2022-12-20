@@ -174,8 +174,8 @@ class Login {
             $this->modx->mail->address('reply-to', $replyTo);
         }
         
-        if ($properties['files']){
-            $files = explode(',',$properties['files']);
+        if ($properties['files']) {
+            $files = explode(',', $properties['files']);
             foreach ($files as $file) {
                 $this->modx->mail->attach(MODX_BASE_PATH.$file);
             }
