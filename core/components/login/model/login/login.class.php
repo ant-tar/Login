@@ -173,6 +173,14 @@ class Login {
         if (!empty($replyTo)) {
             $this->modx->mail->address('reply-to', $replyTo);
         }
+        
+        if ($properties['files']){
+            $files = explode(',',$properties['files']);
+            foreach ($files as $file) {
+                $this->modx->mail->attach(MODX_BASE_PATH.$file);
+            }
+        }
+        
         $this->modx->mail->setHTML(true);
         if ($this->inTestMode) return true;
         $sent = $this->modx->mail->send();
